@@ -31,7 +31,17 @@ if st.button("Calcular ITA"):
                 df_result = ita_calc.calculate_ita(url_main, url_criteria, url_form)
                 
                 st.success("Cálculo concluído com sucesso!")
+                  # Excel Download
+                buffer = io.BytesIO()
+                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                    df_result.to_excel(writer, index=False, sheet_name='ITA Calculado')
                 
+                st.download_button(
+                    label="Baixar Planilha Completa (Excel)",
+                    data=buffer.getvalue(),
+                    file_name="ita_calculado.xlsx",
+                    mime="application/vnd.ms-excel"
+                )
                 # --- Dashboard Section ---
                 st.markdown("---")
                 st.header("Dashboard de Análise")
@@ -116,16 +126,16 @@ if st.button("Calcular ITA"):
                 st.dataframe(df_filtered.head(50))
                 
                 # Excel Download (Filtered)
-                buffer = io.BytesIO()
-                with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-                    df_filtered.to_excel(writer, index=False, sheet_name='ITA Filtrado')
+                #buffer = io.BytesIO()
+                #with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+                #    df_filtered.to_excel(writer, index=False, sheet_name='ITA Filtrado')
                 
-                st.download_button(
-                    label="Baixar Planilha Filtrada (Excel)",
-                    data=buffer.getvalue(),
-                    file_name="ita_filtrado.xlsx",
-                    mime="application/vnd.ms-excel"
-                )
+                #st.download_button(
+                #    label="Baixar Planilha Filtrada (Excel)",
+                #    data=buffer.getvalue(),
+                #    file_name="ita_filtrado.xlsx",
+                #    mime="application/vnd.ms-excel"
+                #)
                 
             except Exception as e:
                 st.error(f"Ocorreu um erro durante o processamento: {e}")
