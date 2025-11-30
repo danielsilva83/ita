@@ -329,12 +329,20 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
     existing_cols = [c for c in ordered_cols if c in df.columns]
     df_detalhado = df[existing_cols].sort_values("nota_final", ascending=False)
 
-    df_merged = (
-        df_detalhado
-        .merge(df_social, on="GRR", how="left")
-        .merge(df_psicologia, on="GRR", how="left")
-        .merge(df_geral, on="GRR", how="left")
+    # -------- 1. Remover duplicatas dentro de cada df ----------
+    df_social_unique = df_social.drop_duplicates(subset="GRR", keep="last")
+    df_psicologia_unique = df_psicologia.drop_duplicates(subset="GRR", keep="last")
+    df_geral_unique = df_geral.drop_duplicates(subset="GRR", keep="last")
+
+    # -------- 2. Unir as três bases de Serviço Social, Psicologia e Geral ----------
+    df_servicos_unificado = (
+        df_social_unique
+            .merge(df_psicologia_unique, on="GRR", how="outer")
+            .merge(df_geral_unique, on="GRR", how="outer")
     )
+
+    # -------- 3. Agora sim, fazer o merge com df_detalhado ----------
+    df_merged = df_detalhado.merge(df_servicos_unificado, on="GRR", how="left")
 
     df_renda = aplicar_regra_renda(df_merged)
     df_acomp = aplicar_indicador_acomp_adesao(df_renda)
