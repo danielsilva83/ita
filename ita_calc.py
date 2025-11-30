@@ -184,7 +184,7 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
         df_form_ = pd.read_excel(file_paht_form, sheet_name="Sheet1")
     except Exception as e:
         raise ValueError(f"Erro ao ler planilhas: {e}")
-
+    df_form_ = df_form_.drop_duplicates(subset="GRR", keep="last")
     df_form = padronizar_grr(df_form_)
 
     # 2. Risco Aprovação
