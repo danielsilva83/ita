@@ -313,12 +313,12 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
         (["TEMPO UFPR - SEM", "ch-integralizada", "ch_media_esperada"], "risco_ch_integralizada", "peso_ch_integralizada", "nota_parcial_ch_integralizada"),
         (["CH ABAIXO", "CH MTO ABAIXO","IRA SEM","porcentagem-aprovacao"], "risco_aprovacao", "peso_aprovacao", "nota_parcial_aprovacao"),
         (["qtd-matriculada","qtd-reprovacao-por-nota","qtd-matricula-cancelada","PORT 5 - CAN",
-          "qtd-rep-frequencia","PORT 5 - FREQ","BAIXA MAT","% Rep Freq 2024-2","% Rep Freq 2024-1","% Rep Freq 2023 -2"], "risco_rep_freq", "peso_rep_freq", "nota_parcial_rep_freq"),
+          "% Rep Freq 2024-2","% Rep Freq 2024-1","% Rep Freq 2023 -2","qtd-rep-frequencia","PORT 5 - FREQ"], "risco_rep_freq", "peso_rep_freq", "nota_parcial_rep_freq"),
         (["porcentagem-historica-de-reprovacao-frequencia"], "risco_hist_freq", "peso_hist_freq", "nota_parcial_hist_freq"),
         (["apareceu-na-avaliacao-semestre-anterior?","Editais 2023","AVALIAÇÃO 2024","recebeu-probem-ano-anterior?"], "risco_historico", "peso_historico", "nota_parcial_historico"),
-        (["responsavel","TEMPO UFPR - SEM","CH MAT TOTAL","CH REC SEM"], "risco_ch_cursada", "peso_ch_cursada", "nota_parcial_ch_cursada"),
+        (["responsavel","TEMPO UFPR - SEM","CH MAT TOTAL","CH REC SEM","BAIXA MAT"], "risco_ch_cursada", "peso_ch_cursada", "nota_parcial_ch_cursada"),
     ]
-
+ 
     ordered_cols = colunas_id.copy()
     for origs, risco, peso, nota in blocos:
         # Only add columns that exist
