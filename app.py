@@ -53,28 +53,28 @@ if st.button("Calcular ITA"):
                 st.sidebar.header("Filtros")
                 
                 # Filter by Course
-                cursos = df_result["curso"].unique().tolist() if "curso" in df_result.columns else []
-                selected_cursos = st.sidebar.multiselect("Filtrar por Curso", options=cursos, default=cursos)
+                #cursos = df_result["curso"].unique().tolist() if "curso" in df_result.columns else []
+                #selected_cursos = st.sidebar.multiselect("Filtrar por Curso", options=cursos, default=cursos)
                 
                 # Filter by Risk Classification
-                classificacoes = df_result["classificacao_ita"].unique().tolist() if "classificacao_ita" in df_result.columns else []
-                selected_classificacoes = st.sidebar.multiselect("Filtrar por Classificação de Risco", options=classificacoes, default=classificacoes)
+                #classificacoes = df_result["classificacao_ita"].unique().tolist() if "classificacao_ita" in df_result.columns else []
+                #selected_classificacoes = st.sidebar.multiselect("Filtrar por Classificação de Risco", options=classificacoes, default=classificacoes)
 
                 # Filter by Income Class (if available)
-                if "classe-da-renda" in df_result.columns:
-                    rendas = df_result["classe-da-renda"].astype(str).unique().tolist()
-                    selected_rendas = st.sidebar.multiselect("Filtrar por Classe de Renda", options=rendas, default=rendas)
-                else:
-                    selected_rendas = []
+                #if "classe-da-renda" in df_result.columns:
+                #    rendas = df_result["classe-da-renda"].astype(str).unique().tolist()
+                #    selected_rendas = st.sidebar.multiselect("Filtrar por Classe de Renda", options=rendas, default=rendas)
+                #else:
+                #    selected_rendas = []
 
                 # Apply Filters
-                df_filtered = df_result.copy()
-                if selected_cursos:
-                    df_filtered = df_filtered[df_filtered["curso"].isin(selected_cursos)]
-                if selected_classificacoes:
-                    df_filtered = df_filtered[df_filtered["classificacao_ita"].isin(selected_classificacoes)]
-                if "classe-da-renda" in df_result.columns and selected_rendas:
-                    df_filtered = df_filtered[df_filtered["classe-da-renda"].astype(str).isin(selected_rendas)]
+                #df_filtered = df_result.copy()
+                #if selected_cursos:
+                #    df_filtered = df_filtered[df_filtered["curso"].isin(selected_cursos)]
+                #if selected_classificacoes:
+                #    df_filtered = df_filtered[df_filtered["classificacao_ita"].isin(selected_classificacoes)]
+                #if "classe-da-renda" in df_result.columns and selected_rendas:
+                #    df_filtered = df_filtered[df_filtered["classe-da-renda"].astype(str).isin(selected_rendas)]
 
                 # Metrics Row
                 col1, col2, col3, col4 = st.columns(4)
