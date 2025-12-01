@@ -38,12 +38,18 @@ if st.button("Calcular ITA"):
                     df_result.to_excel(writer, index=False, sheet_name='ITA Calculado')
                 with pd.ExcelWriter(buffer_ita, engine='xlsxwriter') as writer:
                     df_ITA.to_excel(writer, index=False, sheet_name='ITA')                
-                st.download_button(
-                    label="Baixar Planilha Completa (Excel)",
-                    data=buffer.getvalue(),
-                    file_name="ita_completa.xlsx",
-                    mime="application/vnd.ms-excel"
-                )
+                st.markdown("### Liberar Planilha Completa")
+                senha = st.text_input("Digite a senha para liberar o download da planilha completa", type="password")
+                
+                if senha == "permanencia":
+                    st.download_button(
+                        label="Baixar Planilha Completa (Excel)",
+                        data=buffer.getvalue(),
+                        file_name="ita_completa.xlsx",
+                        mime="application/vnd.ms-excel"
+                    )
+                elif senha:
+                    st.error("acesso a planilha com dados de formulário negado!")
                 st.download_button(
                     label="Baixar Planilha ITA sem formulário (Excel)",
                     data=buffer_ita.getvalue(),
