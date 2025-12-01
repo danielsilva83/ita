@@ -19,7 +19,7 @@ default_criteria = "https://docs.google.com/spreadsheets/d/12Qjx_6-2Bed0cSXH57H3
 default_form = "https://docs.google.com/spreadsheets/d/1HINITMZMllcojXwgq8gOwt_P6dK6MnOe/export?format=xlsx"
 
 url_main = st.text_input("URL da Planilha Completa", value=default_main)
-url_criteria = st.text_input("URL da Planilha de Critérios (Social/Psicologia/pedagogia)", value=default_criteria)
+url_criteria = st.text_input("URL da Planilha de Critérios (Social/Psicologia/Pedagogia)", value=default_criteria)
 url_form = st.text_input("URL da Planilha de Formulário", value=default_form)
  
 if st.button("Calcular ITA"):
