@@ -40,7 +40,7 @@ if st.button("Calcular ITA"):
                     df_ITA.to_excel(writer, index=False, sheet_name='ITA')                
                
                 st.download_button(
-                    label="Baixar Planilha ITA sem formulário (Excel)",
+                    label="Baixar Planilha ITA (Excel)",
                     data=buffer_ita.getvalue(),
                     file_name="ita_sem_form.xlsx",
                     mime="application/vnd.ms-excel"
