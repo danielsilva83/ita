@@ -39,9 +39,10 @@ if st.button("Calcular ITA"):
                 with pd.ExcelWriter(buffer_ita, engine='xlsxwriter') as writer:
                     df_ITA.to_excel(writer, index=False, sheet_name='ITA')                
                 st.markdown("### Liberar Planilha Completa")
-                senha = st.text_input("Digite a senha para liberar o download da planilha completa", type="password")
+                senha = st.session_state.senha.text_input("Digite a senha para liberar o download da planilha completa", type="password")
                 
                 if senha == "permanencia":
+                    st.session_state.senha = ""
                     st.download_button(
                         label="Baixar Planilha Completa (Excel)",
                         data=buffer.getvalue(),
