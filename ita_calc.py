@@ -67,7 +67,7 @@ def aplicar_regra_renda(
         (classe == "C") & (nota.between(0, 10, inclusive="both")),  # 0 a 10
         (classe == "C") & (nota < 0),
     ]
-    choices = [30, 25, 20, 15, 10, 8, 5, 2]
+    choices = [100, 90, 70, 50, 40,30,20, 5]
 
     out[out_col] = np.select(conditions, choices, default=0).astype(int)
     return out
@@ -297,7 +297,7 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
         df[f"peso_{chave}"] = peso
         df[f"nota_parcial_{chave}"] = (df[f"risco_{chave}"] * peso).round(2)
     
-    df["nota_final"] = (df[[f"nota_parcial_{k}" for k in pesos.keys()]].sum(axis=1)).round(2)
+    df["nota_final"] = (df[[f"nota_parcial_{k}" for k in pesos.keys()]].sum(axis=1)*10).round(2)
 
     # 10. Ordenação e Merge
     colunas_id = ["GRR", "NOME","SETOR","proafe", "curso", "ano-ingresso" ,"TEMPO UFPR - SEM","IRA SEM","CPF","renda-per-capta","classe-da-renda","nota-da-renda","E-MAIL PESSOAL","E-MAIL INSTITUCIONAL","TELEFONE","MOTIVO","planilha_andre"]
