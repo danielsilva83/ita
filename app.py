@@ -28,7 +28,7 @@ if st.button("Calcular ITA"):
     else:
         with st.spinner("Processando planilhas e calculando ITA..."):
             try:
-                df_result, df_ITA = ita_calc.calculate_ita(url_main, url_criteria, url_form)
+                df_result, df_ITA = ita_calc.calculate_ita(url_main, url_criteria)
                 
                 st.success("Cálculo concluído com sucesso!")
                   # Excel Download

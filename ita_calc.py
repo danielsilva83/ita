@@ -173,7 +173,7 @@ def calcular_ita_final(df: pd.DataFrame) -> pd.DataFrame:
     df = df.sort_values(by="ITA", ascending=False).reset_index(drop=True)
     return df
 
-def calculate_ita(file_path, file_path_crite, file_paht_form):
+def calculate_ita(file_path, file_path_crite):
     pd.set_option('future.no_silent_downcasting', True)
     
     # Load Data 
