@@ -28,18 +28,26 @@ if st.button("Calcular ITA"):
     else:
         with st.spinner("Processando planilhas e calculando ITA..."):
             try:
-                df_result = ita_calc.calculate_ita(url_main, url_criteria, url_form)
+                df_result, df_ITA = ita_calc.calculate_ita(url_main, url_criteria, url_form)
                 
                 st.success("Cálculo concluído com sucesso!")
                   # Excel Download
                 buffer = io.BytesIO()
+                buffer_ita = io.BytesIO()
                 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
                     df_result.to_excel(writer, index=False, sheet_name='ITA Calculado')
-                
+                with pd.ExcelWriter(buffer_ita, engine='xlsxwriter') as writer:
+                    df_ITA.to_excel(writer, index=False, sheet_name='ITA')                
                 st.download_button(
                     label="Baixar Planilha Completa (Excel)",
                     data=buffer.getvalue(),
-                    file_name="ita_calculado.xlsx",
+                    file_name="ita_completa.xlsx",
+                    mime="application/vnd.ms-excel"
+                )
+                st.download_button(
+                    label="Baixar Planilha ITA sem formulário (Excel)",
+                    data=buffer_ita.getvalue(),
+                    file_name="ita_sem_form.xlsx",
                     mime="application/vnd.ms-excel"
                 )
                 # --- Dashboard Section ---

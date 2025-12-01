@@ -359,4 +359,4 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
     
     df_merged_final = df_ITA.merge(df_form, on="GRR", how="left")
     
-    return df_merged_final
+    return df_merged_final,df_ITA
