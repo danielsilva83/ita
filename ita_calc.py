@@ -301,7 +301,7 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
 
    
 
-    colunas_id = ["GRR","CPF", "NOME","E-MAIL PESSOAL","E-MAIL INSTITUCIONAL","TELEFONE","SETOR","curso","proafe","planilha_andre","MOTIVO","renda-per-capta","classe-da-renda","nota-da-renda","ano-ingresso","TEMPO UFPR - SEM"]
+    colunas_id = ["GRR","CPF", "NOME","E-MAIL PESSOAL","E-MAIL INSTITUCIONAL","TELEFONE","SETOR","curso","proafe","responsavel","planilha_andre","MOTIVO","renda-per-capta","classe-da-renda","nota-da-renda","ano-ingresso","TEMPO UFPR - SEM"]
      # 10. Ordenação e Merge
     #colunas_id = ["GRR","CPF", "NOME","SETOR","curso","proafe","planilha_andre","MOTIVO","renda-per-capta","classe-da-renda","nota-da-renda","ano-ingresso","TEMPO UFPR - SEM","IRA SEM","E-MAIL PESSOAL","E-MAIL INSTITUCIONAL","TELEFONE"]
     
@@ -321,7 +321,7 @@ def calculate_ita(file_path, file_path_crite, file_paht_form):
         "risco_hist_freq", "peso_hist_freq", "nota_parcial_hist_freq"),
         (["apareceu-na-avaliacao-semestre-anterior?","Editais 2023","AVALIAÇÃO 2024","recebeu-probem-ano-anterior?"], 
         "risco_historico", "peso_historico", "nota_parcial_historico"),
-        (["responsavel","TEMPO UFPR - SEM","CH MAT TOTAL","CH REC SEM","BAIXA MAT"], "risco_ch_cursada", "peso_ch_cursada", 
+        (["TEMPO UFPR - SEM","CH MAT TOTAL","CH REC SEM","BAIXA MAT"], "risco_ch_cursada", "peso_ch_cursada", 
         "nota_parcial_ch_cursada"),
     ]  
   
