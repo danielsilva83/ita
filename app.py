@@ -114,7 +114,7 @@ if st.button("Calcular ITA"):
                 st.subheader("Análise Detalhada")
                 c3, c4 = st.columns(2)
                 
-                #with c3:
+                with c3:
                     if "ITA" in df_filtered.columns:
                         fig_hist = px.histogram(df_filtered, x="ITA", nbins=20, title="Distribuição das Notas do ITA", color_discrete_sequence=['#636EFA'])
                         st.plotly_chart(fig_hist, use_container_width=True)
