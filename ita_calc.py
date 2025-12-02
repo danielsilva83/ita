@@ -167,7 +167,7 @@ def calcular_ita_final(df: pd.DataFrame) -> pd.DataFrame:
         df["ITA"].between(30, 60, inclusive="both"),
         df["ITA"] > 60
     ]
-    classes = ["baixo risco", "risco moderado", "risco alto"]
+    classes = ["0 a 30 - baixo risco", "31 a 60 - risco moderado", "61 a 100 - risco alto"]
 
     df["classificacao_ita"] = np.select(conditions, classes, default="não classificado")
     df = df.sort_values(by="ITA", ascending=False).reset_index(drop=True)
